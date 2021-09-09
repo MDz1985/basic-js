@@ -19,9 +19,37 @@ export default function calculateHanoi(disksNumber, turnsSpeed) {
   let stack2 = [];
   let stack3 = [];
   for (let i=0; i<disksNumber; i++){
-    stack1.splice(0,0,i)
+    stack1.push(i)
+    //stack1.splice(0,0,i)
   }
-  return stack1;
+  
+  while (stack3.length < disksNumber){
+    stack2.unshift(stack1[0]);
+    stack1.shift();
+    stack3.unshift(stack1[0]);
+    stack1.shift();
+    stack3.unshift(stack2[0]);
+    stack2.shift();
+    stack2.unshift(stack1[0]);
+    stack1.shift();
+
+  }
+while (stack3.length > 0){
+    stack2.unshift(stack1[0]);
+    stack1.shift;
+  //if (stack2[0]>stack3[0]){
+    stack2.unshift(stack3[0]);
+    stack3.shift();
+  //} else if (stack1[0]>stack3[0]){
+    stack1.unshift(stack3[0]);
+    stack3.shift();
+  //} else if (stack1[0]<stack3[0]){
+    stack2.unshift(stack1[0]);
+    stack1.shift();
+}
+
+
+  //return stack1;
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
