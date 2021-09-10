@@ -16,7 +16,18 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  * The result should be 9
  */
-export default function getMatrixElementsSum(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
+export default function getMatrixElementsSum(matrix) {
+   
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+  let summ = matrix[0].reduce(reducer);
+
+    for (let j = 1; j< matrix.length; j++){
+    
+    for (let i = 0; i< matrix[j].length;i++){
+      if (matrix[j-1][i] !== 0){summ += matrix[j][i];}
+    }
+  }
+  return summ;
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }

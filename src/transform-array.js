@@ -14,10 +14,39 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform(arr) {
-  const e  =  Error ("'arr' parameter must be an instance of the Array!");
-if (typeof arr !== 'object'){return e};
-if (!arr){return e};
-return arr
+  const newArray =[];
+  const e  =  Error ("\'arr\' parameter must be an instance of the Array!");
+if (typeof arr !== 'object'){return e.message};
+if (!arr){return e.message};
+if (arr === null){return e.message};
+if (arr.toString()==='[object Object]'){return e.message};
+for (let i = 0; i< arr.length; i++ ){
+  switch (arr[i]){
+    case '--discard-next':
+      i =i +2;
+      break;
+    case '--discard-prev':
+      if (i>0){
+        newArray.pop();  
+      }
+      break;
+    case '--double-next':
+      if (i<arr.length -1){
+        newArray.push(arr[i+1]);
+      }
+      break;
+    case '--double-prev':
+      if (i>0){
+        newArray.push(arr[i-1]);
+      }
+      break;
+    default:
+      newArray.push(arr[i]);
+    }
+ 
+
+}
+return newArray;
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
