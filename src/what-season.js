@@ -14,12 +14,14 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function getSeason( date ) {
   const e = new Error ("Invalid date!");
   if (!date){return 'Unable to determine the time of year!';}
-  if (typeof date !== 'object') { return e}
-  if (!date.getMonth){return e}
-  if (date.getMonth() > 11 || date.getMonth()<0){return e}
-  if (date.getFullYear() === '2021'){return e;}
-  if (date === Date.now()){return e;}
-
+  if (typeof date !== 'object') {throw e}
+  if (!date.getMonth){throw e}
+  if (date.getMonth() > 11 || date.getMonth()<0){throw e}
+  if (date.getFullYear() === '2021'){throw e}
+  if (date === Date.now()){throw e}
+  
+  
+//return e
 
   if (date.getMonth() === 1 || date.getMonth() === 0 || date.getMonth() === 11){return 'winter';}
   if (date.getMonth() === 2 || date.getMonth() === 3 || date.getMonth() === 4){return 'spring';}

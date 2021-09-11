@@ -16,10 +16,11 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function transform(arr) {
   const newArray =[];
   const e  =  Error ("\'arr\' parameter must be an instance of the Array!");
-if (typeof arr !== 'object'){return e.message};
-if (!arr){return e.message};
-if (arr === null){return e.message};
-if (arr.toString()==='[object Object]'){return e.message};
+  
+if (typeof arr !== 'object'){throw e};
+if (!arr){throw e};
+if (arr === null){throw e};
+if (arr.toString()==='[object Object]'){throw e};
 for (let i = 0; i< arr.length; i++ ){
   switch (arr[i]){
     case '--discard-next':
