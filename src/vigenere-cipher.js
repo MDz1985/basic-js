@@ -58,8 +58,7 @@ this.a = a;
 
     //ENCRYPT
     for(i = 0; i < message.length; i++){
-      if (message[i] !== ' ' && message[i] !== ':' && message[i] !== ')' && message[i] !== '^' && message[i] !== '!' && message[i] !== '1'
-      && message[i] !== '2' && message[i] !== '3' && message[i] !== '4' && message[i] !== ',' && message[i] !== '.'){
+      if (new RegExp(/[a-zA-Z]/).test(message[i])){
         encryptString += this.table(codeWord[n],message[i],'encrypt');
         n++;
       } else {
@@ -85,8 +84,7 @@ this.a = a;
 //DECRYPT
 
     for(i = 0; i < message.length; i++){
-      if (message[i] !== ' ' && message[i] !== ':' && message[i] !== ')' && message[i] !== '^' && message[i] !== '!' 
-      && message[i] !== '1'&& message[i] !== '2' && message[i] !== '3' && message[i] !== '4' && message[i] !== ',' && message[i] !== '.'){
+      if (new RegExp(/[a-zA-Z]/).test(message[i])){
         decryptString += this.table(codeWord[n],message[i],'decrypt');
         n++;
       } else {
