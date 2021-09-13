@@ -11,21 +11,15 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function encodeLine(str) {
- 
-  
-  str.replace(/(\w)\1+/g, '$1')
- /* let newStr = '';
-  let n= 0;
-  for (let i =0; i< str.length;i++){
-    while a
-    break;
-    }
-    if (n === 1) {newStr+=str[i];}else {newStr += n+str[i]; }   
-    n =0;
-
+ let n;
+  let newStr = str;
+  let nStr = str;
+  while (nStr.length > nStr.replace(/(\w)\1+/, '').length){
+    n=  nStr.length  - nStr.replace(/(\w)\1+/, '').length ;
+    nStr = nStr.replace(/(\w)\1+/, '');
+    newStr = newStr.replace(/(\w)\1+/, n+'$1');
   }
-  */
-  return newStr;
+return newStr;
   //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }

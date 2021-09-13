@@ -19,6 +19,8 @@ export default function getSeason( date ) {
   if (date.getMonth() > 11 || date.getMonth()<0){throw e}
   if (date.getFullYear() === '2021'){throw e}
   if (date === Date.now()){throw e}
+  //Date.prototype.toString.call(data)
+  
   
   
 //return e
