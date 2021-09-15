@@ -5,26 +5,56 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default {
+  
   getLength() {
-    //return this.length;
-    throw new NotImplementedError('Not implemented');
+     return this.length;
+    //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   addLink(value) {
-    //this += value.toString();
-    throw new NotImplementedError('Not implemented');
+    
+    return function (){
+      if (value !== null){
+        return this.push(value.toString());  
+      }
+      return this.push('null');
+    }
+      
+    
+    
+    
+    //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   removeLink(position) {
-    throw new NotImplementedError('Not implemented');
+    //if(position){
+      // if (Array.isArray(this)){
+        if(position>=0 && position< this.length && typeof(position) === 'number' && position % 1 === 0
+          ){
+          let a = this.slice(0,position);
+          a.push(this.slice(position+1))
+          return a.flat()
+        //}
+      } else {throw new Error (`You can't remove incorrect link!`)}
+      // }
+      
+    
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   reverseChain() {
-    throw new NotImplementedError('Not implemented');
+    
+    return function (a)
+    {return a.reverse()}
+    //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
   finishChain() {
-    throw new NotImplementedError('Not implemented');
+    let finish = this.join(' )~~( ');
+    
+    this.length = 0;
+    return finish.padStart(finish.length + 2,'( ').padEnd(finish.length + 4,' )');
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
 };
