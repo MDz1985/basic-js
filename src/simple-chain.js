@@ -12,17 +12,14 @@ export default {
     // remove line with error and write your code here
   },
   addLink(value) {
-    
-    return function (){
+    if (Array.isArray(this)){
       if (value !== null){
         return this.push(value.toString());  
       }
       return this.push('null');
     }
-      
     
-    
-    
+    return this;
     //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
@@ -45,7 +42,7 @@ export default {
   reverseChain() {
     
     return function (a)
-    {return a.reverse()}
+    {return this.reverse()}
     //throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   },
