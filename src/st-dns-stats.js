@@ -23,20 +23,40 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getDNSStats(domains) {
-  // let arr =[];
-  // let obj={};
-  // for (let i = 0; i< domains.length;i++){
-  //   arr.push (domains[i].split('.').reverse());   
-  // }
+  let n =[];
+let domainsReverse = [];
+for (let one of domains){
+  domainsReverse.push(one.split('.').reverse())
+}
   
-  //   //for (let j = arr[i].length -1; j>=0 ;i--){
-  //     for (let i = 0; i< arr.length;i++){
-  //       if ()
-
-       
-  //   }
+//MAX LENGTH + array of domens
+for (let i = 0; i < domainsReverse.length; i++){
+  n.push(domainsReverse[i].length) 
+  for (let j = 1; j < domainsReverse[i].length; j++){
     
-  // }
-  throw new NotImplementedError('Not implemented');
+    domainsReverse[i][j] = (domainsReverse[i][j-1] + '.'+ domainsReverse[i][j]); 
+    
+  }
+}
+let max = Math.max.apply(null, n)
+
+// object
+let result =[]
+let obj = {}
+
+for (let i = 0 ; i< domains.length ; i++){
+  for (let l = 0; l< max; l++){
+    if (domainsReverse[i][l]){
+      if (result.includes(domainsReverse[i][l])){
+      obj['.'+domainsReverse[i][l]] += 1;  
+      } else{
+      result.push(domainsReverse[i][l]);
+      obj['.'+domainsReverse[i][l]] = 1;
+      }
+    }  
+  } 
+}
+return obj;
+  // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
