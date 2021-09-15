@@ -12,13 +12,12 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function deleteDigit(n) {
-  for (let j =0; j<=9; j++){
-    for (let i=0; i<n.length;i++){
-      if (n[i] === j){return n.replace('0','')}
+  let m = n.toString()
+  for (let j = 0; j <= 9; j++){
+    for (let i = 0; i < m.length; i++){
+      if (Number(m[i]) === j){return Number(m.replace(Number(j),''))}
+    }
   }
-  
-    
-  }
-  throw new NotImplementedError('Not implemented');
+  //throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
